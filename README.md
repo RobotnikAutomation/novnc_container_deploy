@@ -16,11 +16,13 @@ noVNC docker deployment files for:
 
 ```bash
 sudo apt-get update
-sudo apt-get install \
+sudo apt-get install -y \
     ca-certificates \
     curl \
     gnupg \
     lsb-release
+mkdir -p ~/.gnupg
+chmod 700 ~/.gnupg
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | \
 sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 echo \
@@ -30,7 +32,7 @@ https://download.docker.com/linux/ubuntu \
 $(lsb_release -cs) stable" | \
 sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt-get update
-sudo apt-get install \
+sudo apt-get install -y \
     docker-ce \
     docker-ce-cli \
     containerd.io \
