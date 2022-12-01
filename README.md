@@ -57,19 +57,49 @@ checkout <TAG OR BRANCH>
 **Note:** You will need credentials files to login into the registry
 
 ```bash
-cat <CREDENTIALS_JSON_FILE> | \
+cred_file=<CREDENTIALS_JSON_FILE>
+cat "${cred_file}" | \
 docker login -u _json_key --password-stdin https://europe-west1-docker.pkg.dev
 ```
 
 ### Docker Compose
 
+#### Complete
 ```bash
+docker compose up -d
+```
+#### Backend only
+```bash
+cd backend_only
+docker compose up -d
+```
+
+#### Frontend only
+```bash
+cd frontend_only
 docker compose up -d
 ```
 
 ### Docker Swarm
 
+Start the swarm
+
 ```bash
 docker swarm init
+```
+
+#### Complete
+```bash
 docker stack deploy --with-registry-auth --prune -c docker-compose.yaml  novnc
+```
+#### Backend only
+```bash
+cd backend_only
+docker stack deploy --with-registry-auth --prune -c docker-compose.yaml  websockify_backend
+```
+
+#### Frontend only
+```bash
+cd frontend_only
+docker stack deploy --with-registry-auth --prune -c docker-compose.yaml  novnc_frontend
 ```
