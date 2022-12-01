@@ -49,4 +49,3 @@ services:
       - type: volume
         source: web
         target: /var/www/html/web
-
