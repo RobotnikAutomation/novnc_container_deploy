@@ -4,6 +4,7 @@
 ### Added
 - Frontend only stack
 - Backend only stack
+- Added simple docker install script
 ### Fixed
 - Improved Readme
 
