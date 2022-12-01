@@ -1,0 +1,14 @@
+---
+version: '3.7'
+networks:
+  host:
+    name: host
+    external: true
+
+  # BACKEND
+  websockify:
+    image: >-
+      europe-west1-docker.pkg.dev/robotnik-5830-dev/internal/websockify:backend-0.10.0-1
+    networks:
+      - host
+    command: "6080 localhost:5900"
